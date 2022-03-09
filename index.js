@@ -13,19 +13,17 @@ const getEventsTypes = async (name) => {
         interactions: 1,
         list: [
           returned.data[x].type,
-          "^",
+
           returned.data[x].created_at.match(reg)[0],
         ],
       });
     } else {
       eventMap.get(returned.data[x].repo.name).interactions++;
-      eventMap
-        .get(returned.data[x].repo.name)
-        .list.push(
-          returned.data[x].type,
-          "^",
-          returned.data[x].created_at.match(reg)[0]
-        );
+      eventMap.get(returned.data[x].repo.name).list.push(
+        returned.data[x].type,
+
+        returned.data[x].created_at.match(reg)[0]
+      );
     }
   }
   return eventMap;
@@ -46,5 +44,5 @@ const getEventsRepos = async (name) => {
 };
 
 (async () => {
-  console.log(await getEventsTypes("dogpatch626"));
+  console.log(await getEventsTypes("char"));
 })();
